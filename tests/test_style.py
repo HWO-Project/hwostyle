@@ -108,6 +108,28 @@ class TestPalette:
         assert len(d) == 6
 
 
+class TestColormaps:
+    """Tests for the semantic colormap registry."""
+
+    def test_readouts_is_magma(self):
+        """The readouts category is magma in every mode."""
+        for mode in ("dark", "light", "paper", "barbie"):
+            hwostyle.use(mode)
+            assert hwostyle.cmaps.readouts == "magma"
+
+    def test_intensity_low_is_dark(self):
+        """Paper intensity is oriented low = dark (a dark hole reads dark)."""
+        hwostyle.use("paper")
+        cmap = plt.get_cmap(hwostyle.cmaps.intensity)
+        assert sum(cmap(0.0)[:3]) < sum(cmap(1.0)[:3])
+
+    def test_intensity_resolves(self):
+        """Intensity resolves to a usable colormap in every mode."""
+        for mode in ("dark", "light", "paper", "barbie"):
+            hwostyle.use(mode)
+            assert plt.get_cmap(hwostyle.cmaps.intensity) is not None
+
+
 class TestModes:
     """Tests for mode switching."""
 

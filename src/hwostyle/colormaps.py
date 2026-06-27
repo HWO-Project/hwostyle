@@ -28,8 +28,10 @@ class Colormaps:
     The returned colormap depends on the current mode.
 
     Categories:
-        intensity, high_dynamic_range, residual, phase, probability,
-        mask, brand_intensity, brand_diverging.
+        intensity (idealized / noiseless model images, low = dark),
+        readouts (detector readouts + processed data products; magma),
+        high_dynamic_range, residual, phase, probability, mask,
+        brand_intensity, brand_diverging.
     """
 
     def __init__(self, mode="dark"):

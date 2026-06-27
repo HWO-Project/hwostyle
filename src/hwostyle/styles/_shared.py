@@ -18,7 +18,12 @@ SHARED_RC = {
 }
 
 SHARED_CMAPS = {
+    # Sequential map for idealized / pre-readout intensity images, oriented
+    # low = dark (a dark hole reads dark). Detector readouts and processed
+    # data products use ``readouts`` (magma) to match the survey visual
+    # language; idealized noiseless model images use ``intensity``.
     "intensity": "viridis",
+    "readouts": "magma",
     "high_dynamic_range": "inferno",
     "residual": "RdBu_r",
     "phase": "twilight",
